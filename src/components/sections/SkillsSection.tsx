@@ -4,8 +4,6 @@ export default function SkillsSection() {
   return (
     <section id="skills" aria-labelledby="skills-heading" className="c-section">
       <div className="c-container">
-
-        {/* Header */}
         <div className="text-center mb-16 reveal">
           <span className="c-section-tag">02 — Skills</span>
           <h2 id="skills-heading" className="c-section-title">
@@ -15,8 +13,6 @@ export default function SkillsSection() {
             Core technologies I use to build production-ready applications.
           </p>
         </div>
-
-        {/* Skill bars grid */}
         <div
           className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16"
           role="list"
@@ -50,8 +46,6 @@ export default function SkillsSection() {
             </div>
           ))}
         </div>
-
-        {/* Extra skills chips */}
         <div className="reveal">
           <p className="font-syne text-lg font-bold text-center mb-5 text-[var(--text)]">
             Also proficient in

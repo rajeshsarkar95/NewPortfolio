@@ -12,7 +12,6 @@ import ExperienceSection    from '@/components/sections/ExperienceSection'
 import CertificationsSection from '@/components/sections/CertificationsSection'
 import ContactSection       from '@/components/sections/ContactSection'
 
-/* ── Background ambient orbs (pure CSS animation) ─────────── */
 function AmbientOrbs() {
   return (
     <div aria-hidden="true" className="pointer-events-none">
@@ -50,7 +49,6 @@ function AmbientOrbs() {
   )
 }
 
-/* ── Cursor glow (desktop only) ───────────────────────────── */
 function CursorGlow() {
   const ref = useRef<HTMLDivElement>(null)
 
@@ -79,7 +77,6 @@ function CursorGlow() {
   )
 }
 
-/* ── Scroll reveal hook ───────────────────────────────────── */
 function useScrollReveal() {
   useEffect(() => {
     const obs = new IntersectionObserver(
@@ -87,7 +84,6 @@ function useScrollReveal() {
         entries.forEach((entry) => {
           if (!entry.isIntersecting) return
           entry.target.classList.add('visible')
-          // Animate skill bars when they enter viewport
           entry.target.querySelectorAll<HTMLElement>('[data-width]').forEach((bar) => {
             bar.style.width = bar.dataset.width + '%'
           })
@@ -99,8 +95,6 @@ function useScrollReveal() {
     return () => obs.disconnect()
   }, [])
 }
-
-/* ── Page ─────────────────────────────────────────────────── */
 const Home: NextPage = () => {
   useScrollReveal()
 
@@ -117,10 +111,7 @@ const Home: NextPage = () => {
         <meta property="og:description" content="Building scalable, efficient, user-focused web applications." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      {/* Noise grain overlay */}
       <div className="noise-overlay" aria-hidden="true" />
-
       <AmbientOrbs />
       <CursorGlow />
       <Navbar />

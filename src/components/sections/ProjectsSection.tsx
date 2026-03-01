@@ -7,14 +7,11 @@ function ProjectCard({ p, idx }: { p: Project; idx: number }) {
       role="listitem"
       className={`relative rounded-2xl overflow-hidden border border-[var(--border)] bg-[var(--bg3)] transition-all duration-300 hover:border-[var(--accent)] hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] reveal reveal-d${(idx % 3) + 1}`}
     >
-      {/* Featured badge */}
       {p.featured && (
         <div className="absolute top-3.5 right-3.5 z-10 px-3 py-1 rounded-full bg-[var(--accent)] text-white text-[11px] font-semibold">
           ⭐ Featured
         </div>
       )}
-
-      {/* Thumbnail */}
       <div className="h-48 relative overflow-hidden bg-[var(--bg)]" aria-hidden="true">
         <div
           className="absolute inset-0 opacity-10 transition-opacity duration-300 group-hover:opacity-20"
@@ -24,10 +21,7 @@ function ProjectCard({ p, idx }: { p: Project; idx: number }) {
           {p.emoji}
         </div>
       </div>
-
-      {/* Body */}
       <div className="p-6">
-        {/* Tags */}
         <div className="flex flex-wrap gap-1.5 mb-3.5" role="list" aria-label="Technologies used">
           {p.tags.map((t) => (
             <span
@@ -39,13 +33,10 @@ function ProjectCard({ p, idx }: { p: Project; idx: number }) {
             </span>
           ))}
         </div>
-
         <h3 className="font-syne text-lg font-bold leading-tight mb-2.5 text-[var(--text)]">
           {p.title}
         </h3>
         <p className="text-sm text-[var(--text2)] leading-relaxed mb-5">{p.desc}</p>
-
-        {/* Links */}
         <div className="flex gap-3">
           <a
             href={p.demo}
@@ -76,7 +67,6 @@ function ProjectCard({ p, idx }: { p: Project; idx: number }) {
     </article>
   )
 }
-
 export default function ProjectsSection() {
   return (
     <section id="projects" aria-labelledby="projects-heading" className="c-section bg-[var(--bg2)]">
