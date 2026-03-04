@@ -1,6 +1,6 @@
 "use client";
-
 import { useState } from "react";
+import Image from "next/image";
 
 type ReadingStatus = "completed" | "reading" | "queue";
 
@@ -110,10 +110,12 @@ function BookCard({ book }: { book: Book }) {
                 }}
             >
                 {!imgError ? (
-                    <img
+                    <Image
                         src={book.coverUrl}
                         alt={book.title}
-                        className="w-full h-full object-cover"
+                        fill
+                        sizes="(max-width: 768px) 50vw, 25vw"
+                        className="object-cover"
                         onError={() => setImgError(true)}
                     />
                 ) : (
@@ -192,7 +194,7 @@ export default function BooksComponent() {
                         <p className="text-white/30 text-[11px] font-mono tracking-[4px] uppercase mb-3">
                             Library
                         </p>
-                        <h1 className="text-white text-4xl font-bold mb-2">Books I've Read</h1>
+                        <h1 className="text-white text-4xl font-bold mb-2">Books I ve Read</h1>
                         <p className="text-white/40 text-[15px]">
                             A collection of books that shaped my thinking.
                         </p>
