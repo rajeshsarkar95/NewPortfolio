@@ -71,14 +71,14 @@ export default function HeroSection() {
             <h1 className="reveal-item font-syne font-black leading-[1.05] tracking-tight mb-4 text-[clamp(42px,5.5vw,72px)]" style={{ "--delay": "0.2s" } as any}>
               Hi, I&apos;m <br />
               <span className="bg-gradient-to-r from-[var(--accent)] via-[var(--accent3)] to-[var(--accent2)] bg-clip-text text-transparent italic">
-                !!Rajesh 
+                !!Rajesh
               </span>
             </h1>
             <p className="reveal-item font-mono text-[var(--accent2)] text-sm mb-6 tracking-widest flex items-center gap-2" style={{ "--delay": "0.3s" } as any}>
               <span className="text-[var(--text3)] opacity-50">&gt;</span> Full Stack Software Engineer — MERN Stack
             </p>
             <p className="reveal-item text-[var(--text2)] text-lg leading-relaxed max-w-xl mb-10 opacity-90" style={{ "--delay": "0.4s" } as any}>
-              I craft scalable, high-performance web applications from Uttar Pradesh, India. 
+              I craft scalable, high-performance web applications from Uttar Pradesh, India.
               <span className="text-[var(--text)] font-medium"> 2+ years </span> of turning complex problems into elegant solutions.
             </p>
             <div className="reveal-item flex flex-wrap gap-5" style={{ "--delay": "0.5s" } as any}>
@@ -89,10 +89,16 @@ export default function HeroSection() {
                     <path d="M5 12h14M12 5l7 7-7 7" />
                   </svg>
                 </span>
+
               </button>
-              <button onClick={() => scrollTo("#contact")} className="c-btn-secondary hover:bg-[var(--surface)] transition-colors duration-300">
-                Get in Touch
+
+              <button
+                onClick={() => window.open("/cv/RajeshSarkar.pdf")}
+                className="c-btn-primary hover:bg-[var(--primary-dark)] transition-colors duration-300"
+              >
+                Download CV
               </button>
+
             </div>
             <div className="reveal-item flex gap-12 mt-16 pt-10 border-t border-[var(--border)]/50" style={{ "--delay": "0.6s" } as any}>
               {STATS.map((item, i) => (
@@ -109,7 +115,7 @@ export default function HeroSection() {
           </div>
           <div className="relative flex items-center justify-center perspective-1000">
             <div className="animate-float-slow transition-transform duration-700 hover:rotate-x-2 hover:rotate-y-2">
-               <CodeWindow />
+              <CodeWindow />
             </div>
             {FLOATING_TAGS.map((tag) => (
               <span

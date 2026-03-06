@@ -3,7 +3,7 @@ export const educations = [
     id: '1',
     institution: 'uttarakhand  university',
     degree: 'Bachelor of Computer Applications (BCA)',
-    period: '2023 – 2027',
+    period: '2024 – 2027',
     description:
       'Focused on full-stack development, databases, and software engineering fundamentals, with a strong emphasis on building scalable, high-performance web applications. Passionate about clean architecture, optimized backend systems, responsive frontend interfaces, and writing maintainable, well-structured code. Continuously improving problem-solving skills, data structures & algorithms knowledge, and understanding of system design principles.',
   },
@@ -11,7 +11,7 @@ export const educations = [
     id: '2',
     institution: 'Ak inter college',
     degree: 'Intermediate (Science Stream)',
-    period: '2021 – 2022',
+    period: '2023 – 2024',
     description:
       'Completed Science stream with a strong academic foundation in Physics, Chemistry, and Mathematics. Developed a deep interest in understanding scientific principles, numerical problem-solving, and analytical thinking. Consistently performed well in Mathematics and Physics, demonstrating logical reasoning and conceptual clarity. Actively engaged in practical experiments and academic assignments, strengthening both theoretical knowledge and application skills.',
   },
