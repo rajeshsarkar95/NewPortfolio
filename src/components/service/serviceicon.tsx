@@ -2,7 +2,7 @@
 
 import React from "react";
 import { ServiceIconProps } from "./service";
-_
+
 const icons: Record<string, React.ReactNode>={
   "custom-software":(
     <>

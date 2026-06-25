@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-type Track = {
+type Track ={
   id: string;
   title: string;
   genre: string;
@@ -16,13 +16,13 @@ type PlayerCardProps = Track & {
 };
 
 const TRACKS: Track[] = [
-  { id: "1", title: "YouTube Radio Mix", genre: "Radio", language: "Hindi", videoId: "QQEu7GTa6zk"},
-  { id: "2", title: "Lo-Fi Chill", genre: "Lo-Fi", language: "Hindi", videoId: "3oOXPPRRbt0"},
-  { id: "4", title: "Jazz Vibes", genre: "Jazz", language: "Hindi", videoId: "pvAsrsjtqi4"},
-  { id: "5", title: "Galat Fehmi", genre: "Pop", language: "Hindi", videoId: "OzA5H9I95ng"},
-  { id: "6", title: "Dard", genre: "Sad", language: "Hindi", videoId: "AyLTRvvCjAo"},
-  { id: "7", title: "Your Title Here", genre: "Radio", language: "Hindi", videoId: "Pm5JZvGFpeQ"},
-  { id: "8", title: "Your Title Here", genre: "Radio", language: "Bengali", videoId: "7NORZaLoc3Y"},
+  { id: "1", title: "YouTube Radio Mix", genre: "Radio", language: "Hindi",videoId:"QQEu7GTa6zk"},
+  { id: "2", title: "Lo-Fi Chill", genre: "Lo-Fi", language: "Hindi",videoId:"3oOXPPRRbt0"},
+  { id: "4", title: "Jazz Vibes", genre: "Jazz", language: "Hindi",videoId:"pvAsrsjtqi4"},
+  { id: "5", title: "Galat Fehmi", genre: "Pop", language: "Hindi",videoId:"OzA5H9I95ng"},
+  { id: "6", title: "Dard", genre: "Sad", language: "Hindi",videoId: "AyLTRvvCjAo"},
+  { id: "7", title: "Your Title Here", genre: "Radio", language:"Hindi", videoId:"Pm5JZvGFpeQ"},
+  { id: "8", title: "Your Title Here", genre: "Radio", language:"Bengali", videoId:"7NORZaLoc3Y"},
 ];
 
 const LANGUAGE_CONFIG = {
@@ -33,7 +33,7 @@ const LANGUAGE_CONFIG = {
     glow: "shadow-orange-500/30",
     bar: "bg-orange-400",
   },
-  Bengali: {
+  Bengali:{
     emoji: "",
     accent: "from-emerald-400 to-teal-500",
     pill: "bg-emerald-500/15 text-emerald-300 border-emerald-500/30",
@@ -42,13 +42,14 @@ const LANGUAGE_CONFIG = {
   },
 } as const;
 
-const ALL_LANGUAGES = ["All", ...Object.keys(LANGUAGE_CONFIG)] as const;
+const ALL_LANGUAGES = ["All",...Object.keys(LANGUAGE_CONFIG)] as const;
+
 type TabValue = (typeof ALL_LANGUAGES)[number];
 
-function SoundBars() {
+function SoundBars(){
   return (
     <div className="flex items-end gap-[3px] h-6">
-      {[60, 100, 75, 45].map((h, i) => (
+      {[60,100,75,45].map((h, i)=>(
         <div
           key={i}
           className="w-[3px] bg-white rounded-full animate-pulse"
@@ -62,8 +63,7 @@ function SoundBars() {
     </div>
   );
 }
-
-function PlayerCard({title,genre,language,videoId,isActive,onPlay,onStop}:PlayerCardProps) {
+function PlayerCard({title,genre,language,videoId,isActive,onPlay,onStop}:PlayerCardProps){
   const cfg = LANGUAGE_CONFIG[language];
   return (
     <div
@@ -119,7 +119,8 @@ function PlayerCard({title,genre,language,videoId,isActive,onPlay,onStop}:Player
     </div>
   );
 }
-export default function MusicGrid() {
+
+export default function MusicGrid(){
   const [activeId, setActiveId] = useState<string | null>(null);
   const [activeTab, setActiveTab] = useState<TabValue>("All");
   const filtered = activeTab === "All" ? TRACKS : TRACKS.filter((t) => t.language === activeTab);
@@ -127,6 +128,7 @@ export default function MusicGrid() {
     acc[lang] = lang === "All" ? TRACKS.length : TRACKS.filter((t) => t.language === lang).length;
     return acc;
   }, {});
+  
   const activeTrack = TRACKS.find((t) => t.id === activeId);
 
   return (
@@ -145,7 +147,7 @@ export default function MusicGrid() {
       </header>
       <div className="px-4 pb-2">
         <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide snap-x snap-mandatory">
-          {ALL_LANGUAGES.map((lang) => {
+          {ALL_LANGUAGES.map((lang)=>{
             const isSelected = activeTab === lang;
             const cfg = lang !== "All" ? LANGUAGE_CONFIG[lang as Track["language"]] : null;
             return (
@@ -159,7 +161,7 @@ export default function MusicGrid() {
                       : "bg-white text-slate-900 border-transparent shadow"
                     : "bg-slate-900 text-slate-400 border-white/10"
                   }`}
-              >
+               >
                 {cfg ? `${cfg.emoji} ${lang}` : `🎶 ${lang}`}
                 <span className={`text-[10px] rounded-full px-1.5 py-0.5 font-bold ${isSelected ? "bg-white/20 text-white" : "bg-slate-800 text-slate-500"}`}>
                   {counts[lang]}
