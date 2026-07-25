@@ -11,7 +11,8 @@ const icons: Record<string, React.ReactNode>={
       <rect x="3" y="13" width="8" height="8" rx="1.5" strokeWidth="1.5" fill="none"/>
       <path d="M13 17h8M17 13v8" strokeWidth="1.5" strokeLinecap="round"/>
       <path d="M5.5 7l2 2 3.5-3.5" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-    </>
+    </> 
+    
   ),
   "web-app":(
     <>
