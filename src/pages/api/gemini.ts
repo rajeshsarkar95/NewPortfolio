@@ -25,15 +25,23 @@ export default async function handler(
       });
     }
 
-    // Updated model to gemini-2.0-flash (or "gemini-1.5-flash")
+    // Updated active model
     const response = await ai.models.generateContent({
-      model: "gemini-2.0-flash",
+      model: "gemini-3.6-flash",
       contents: prompt,
     });
 
     return res.status(200).json({ text: response.text });
   } catch (error: any) {
     console.error("Error in /api/gemini:", error);
+
+    // Specific handling for Rate Limit (429) errors
+    if (error?.status === 429 || error?.message?.includes("RESOURCE_EXHAUSTED")) {
+      return res.status(429).json({
+        error: "Rate limit reached! Please wait ~30 seconds before sending another message.",
+      });
+    }
+
     return res.status(500).json({
       error: error?.message || "An unexpected error occurred on the server.",
     });
