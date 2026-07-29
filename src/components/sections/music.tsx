@@ -34,7 +34,7 @@ const LANGUAGE_CONFIG = {
 const ALL_LANGUAGES = ["All", ...Object.keys(LANGUAGE_CONFIG)] as const;
 type TabValue = (typeof ALL_LANGUAGES)[number];
 
-function formatTime(seconds: number) {
+function formatTime(seconds: number){
   if (isNaN(seconds) || seconds < 0) return "0:00";
   const mins = Math.floor(seconds / 60);
   const secs = Math.floor(seconds % 60);
@@ -170,8 +170,7 @@ function PlayerCard({
       <div id={containerId} className="hidden" />
 
       {/* Accent Strip */}
-      <div className={`h-1 w-full bg-gradient-to-r ${cfg.accent}`} />
-
+      <div className={`h-1 w-full bg-gradient-to-r ${cfg.accent}`}/>
       <div className="p-4 flex flex-col gap-3">
         <div className="flex items-center gap-4">
           <div
@@ -179,7 +178,6 @@ function PlayerCard({
           >
             {isActive ? <SoundBars /> : <span className="text-xl sm:text-2xl">🎵</span>}
           </div>
-
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-1.5 mb-1 flex-wrap">
               <span className={`text-[10px] font-semibold uppercase tracking-wider border rounded-full px-2 py-0.5 ${cfg.pill}`}>

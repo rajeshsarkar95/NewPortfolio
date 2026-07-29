@@ -20,21 +20,46 @@ export const chips: string[] = [
 
 export const projects: Project[] = [
   {
-    id: 'shopverse',
-    emoji: '🛒',
-    image: '/images/projects/uphaarbox.png',
+  id: 'shopverse',
+  emoji: '🛒',
+  image: '/images/projects/uphaarbox.png',
+  featured: false,
+  tags: ['Next.js', 'MongoDB', 'Redux Toolkit', 'Stripe'],
+  title: 'UphaarBox — Pilibhit Local E-Commerce Platform',
+  desc: 'Built a local e-commerce platform for Pilibhit with product browsing, secure payments, order management, and an admin dashboard.',
+  demo: 'https://github.com/rajeshsarkar',
+  github: 'https://github.com/rajeshsarkar',
+  gradient: ''
+},
+  {
+    id: "pathology",
+    emoji: "🧪",
+    image: "/images/projects/Pathogy.png",
     featured: true,
-    tags: ['Next.js', 'MongoDB', 'Redux', 'Stripe'],
-    title: 'uphaarbox.com — E-Commerce Platform',
-    desc: 'Full-featured e-commerce platform...',
-    demo: 'https://github.com/rajeshsarkar',
-    github: 'https://github.com/rajeshsarkar',
-    gradient: ''
+    tags: ["Next.js", "Node.js", "MongoDB", "Express"],
+    title: "Pathology Management System",
+    desc: "A comprehensive pathology management system for efficient lab operations, patient management, and test result tracking.",
+    demo: "",
+    gradient: '',
+    github: 'https://github.com/rajeshsarkar'
+  },
+  {
+   id:"School-Management",
+   emoji:"🏫",
+   image:"/images/projects/EducationsMag.png",
+   featured: false,
+   tags:["Next.js","Node.js","MongoDB","Express"],
+   title:"School Management System",
+   desc:"A comprehensive school management system for efficient administration, student tracking, and communication.",
+   demo:"https://school-management-system-eta.vercel.app/",
+   gradient:'',
+   github:'https://github.com/rajeshsarkar' 
   },
 {
   id: 'taskflow',
   emoji: '📝',
   image: '/images/projects/Skillup.png',
+  featured: false,
   tags: ['React', 'Node.js', 'MongoDB', 'Socket.io'],
   title: 'skillup —  edtech Project',
   desc: 'Real-time project management tool with drag-and-drop boards, team collaboration, live notifications, and Kanban views.',

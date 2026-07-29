@@ -21,6 +21,7 @@ export default function ContactSection() {
   const [submitting, setSubmit] = useState(false)
   const [success, setSuccess] = useState(false)
 
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setForm((f) => ({ ...f, [name]: value }))
@@ -30,9 +31,9 @@ export default function ContactSection() {
   const handleSubmit = async (e: FormEvent)=>{
     e.preventDefault()
     const errs = validate(form)
-    if (Object.keys(errs).length) { setErrors(errs); return }
+    if (Object.keys(errs).length) { setErrors(errs); return}
     setSubmit(true)
-    await new Promise((r) => setTimeout(r, 1500))
+    await new Promise((r) => setTimeout(r,1500))
     setSuccess(true)
     setForm({ name: '', email: '', subject: '', message: '' })
     setSubmit(false)
@@ -42,7 +43,6 @@ export default function ContactSection() {
   return (
     <section id="contact" aria-labelledby="contact-heading" className="c-section">
       <div className="c-container">
-
         <div className="text-center mb-16 reveal">
           <span className="c-section-tag">06 — Contact</span>
           <h2 id="contact-heading" className="c-section-title">
