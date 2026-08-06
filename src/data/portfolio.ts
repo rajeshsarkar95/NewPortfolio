@@ -10,6 +10,8 @@ export const skills: Skill[] = [
   { name: 'Express.js',          pct: 84 },
   { name: 'Redux / Zustand',     pct: 78 },
   { name: 'AWS (EC2, S3, Lambda)', pct: 70 },
+  { name:"Cloude Ai",pct:60},
+  {name:"ChatGPT (GPT-5.5)", pct:50}
 ]
 
 export const chips: string[] = [

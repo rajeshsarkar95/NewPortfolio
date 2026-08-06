@@ -1,4 +1,6 @@
-import { useState, useRef, FormEvent } from 'react'
+'use client'
+
+import { useState, FormEvent } from 'react'
 import type { ContactForm } from '@/types'
 
 function validate(data: ContactForm) {
@@ -9,18 +11,20 @@ function validate(data: ContactForm) {
   if (!data.message.trim() || data.message.trim().length < 20) errors.message = 'Message must be at least 20 characters.'
   return errors
 }
+
 const LINKS = [
   { label: 'EMAIL', value: 'prorajeshsarakar@gmail.com', href: 'mailto:prorajeshsarakar@gmail.com', bg: 'rgba(108,99,255,0.15)', color: '#6c63ff', emoji: '📧' },
   { label: 'LINKEDIN', value: 'Linkedin', href: 'https://www.linkedin.com/in/rajesh-sarkar-9777b0302/', bg: 'rgba(56,189,248,0.15)', color: '#38bdf8', emoji: '💼' },
   { label: 'GITHUB', value: 'Github', href: 'https://github.com/rajeshsarkar95', bg: 'rgba(167,139,250,0.15)', color: '#a78bfa', emoji: '🐙' },
   { label: 'LOCATION', value: 'Uttar Pradesh, India', href: null, bg: 'rgba(52,211,153,0.15)', color: '#34d399', emoji: '📍' },
 ]
+
 export default function ContactSection() {
   const [form, setForm] = useState<ContactForm>({ name: '', email: '', subject: '', message: '' })
   const [errors, setErrors] = useState<Partial<ContactForm>>({})
   const [submitting, setSubmit] = useState(false)
   const [success, setSuccess] = useState(false)
-
+  const [submitError, setSubmitError] = useState('')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
@@ -28,18 +32,36 @@ export default function ContactSection() {
     if (errors[name as keyof ContactForm]) setErrors((er) => ({ ...er, [name]: undefined }))
   }
 
-  const handleSubmit = async (e: FormEvent)=>{
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     const errs = validate(form)
-    if (Object.keys(errs).length) { setErrors(errs); return}
-    setSubmit(true)
-    await new Promise((r) => setTimeout(r,1500))
-    setSuccess(true)
-    setForm({ name: '', email: '', subject: '', message: '' })
-    setSubmit(false)
-    setTimeout(() => setSuccess(false), 5000)
-  }
+    if (Object.keys(errs).length) {
+      setErrors(errs)
+      return
+    }
 
+    setSubmit(true)
+    setSubmitError('')
+
+    try {
+      const res = await fetch('/api/contact/route', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok) {
+        throw new Error(data.error || 'Something went wrong. Please try again.')
+      }
+      setSuccess(true)
+      setForm({ name: '', email: '', subject: '', message: '' })
+      setTimeout(() => setSuccess(false), 5000)
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : 'Failed to send message. Please try again.')
+    } finally {
+      setSubmit(false)
+    }
+  }
   return (
     <section id="contact" aria-labelledby="contact-heading" className="c-section">
       <div className="c-container">
@@ -166,9 +188,18 @@ export default function ContactSection() {
                   ✅ Message sent! I&apos;ll get back to you within 24 hours.
                 </div>
               )}
+              {submitError && (
+                <div
+                  role="alert"
+                  aria-live="assertive"
+                  className="flex items-center gap-3 p-4 rounded-xl text-sm font-medium"
+                  style={{ background: 'rgba(248,113,113,0.1)', border: '1px solid rgba(248,113,113,0.3)', color: '#f87171' }}
+                >
+                  ⚠️ {submitError}
+                </div>
+              )}
             </form>
           </div>
-
         </div>
       </div>
     </section>
