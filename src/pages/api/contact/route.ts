@@ -24,6 +24,6 @@ Message: ${message}`;
     }
   );
 
-  if (!res.ok) return Response.json({ error: "Failed" }, { status: 502 });
+  if (!res.ok) return Response.json({ error: "Failed" }, {status:502 });
   return Response.json({ success: true });
 }

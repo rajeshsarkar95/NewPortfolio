@@ -214,8 +214,6 @@ export default function GeminiChatButton({
                 )}
               </div>
             ))}
-
-            {/* Animated Loading Indicator */}
             {loading && (
               <div className="flex gap-2.5 items-end justify-start">
                 <div className="w-7 h-7 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center shrink-0 mb-1">

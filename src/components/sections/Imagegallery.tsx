@@ -30,16 +30,25 @@ const IMAGES: GalleryImage[] = [
     { id: 5, src: "/myimages/photokhatima.webp", tag: "Music", label: "restaurants", location: "Khatima", year: "2023" },
     { id: 6, src: "/myimages/zymwithanuj.jpeg", tag: "Life", label: "zym", location: "Favorite Cafe", year: "2024" },
     { id: 7, src: "/myimages/zym.jpeg", tag: "Work", label: "Zym", location: "Neoria", year: "2023" },
+    {id:8,src:"/myimages/github.png",tag:"Work",label:"GitHub",location:"GitHub",year:"2022"},
 
 ];
 
 const TAGS: FilterTag[] = ["All", "Travel", "Life", "Work", "Music"];
 
 const TAG_STYLE: Record<Tag, TagStyle> = {
-    Travel: { text: "text-indigo-400", bg: "bg-indigo-500/20", border: "border-indigo-500/40", dot: "bg-indigo-400" },
-    Life: { text: "text-blue-400", bg: "bg-blue-500/20", border: "border-blue-500/40", dot: "bg-blue-400" },
-    Work: { text: "text-violet-400", bg: "bg-violet-500/20", border: "border-violet-500/40", dot: "bg-violet-400" },
-    Music: { text: "text-cyan-400", bg: "bg-cyan-500/20", border: "border-cyan-500/40", dot: "bg-cyan-400" },
+    Travel: {
+        text: "text-indigo-400", bg: "bg-indigo-500/20", border: "border-indigo-500/40", dot: "bg-indigo-400",
+    },
+    Life: {
+        text: "text-blue-400", bg: "bg-blue-500/20", border: "border-blue-500/40", dot: "bg-blue-400",
+    },
+    Work: {
+        text: "text-violet-400", bg: "bg-violet-500/20", border: "border-violet-500/40", dot: "bg-violet-400",
+    },
+    Music: {
+        text: "text-cyan-400", bg: "bg-cyan-500/20", border: "border-cyan-500/40", dot: "bg-cyan-400",
+    },
 };
 
 function PinIcon(): JSX.Element {

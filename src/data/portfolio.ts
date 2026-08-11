@@ -30,7 +30,7 @@ export const projects: Project[] = [
   title: 'UphaarBox — Pilibhit Local E-Commerce Platform',
   desc: 'Built a local e-commerce platform for Pilibhit with product browsing, secure payments, order management, and an admin dashboard.',
   demo: 'https://github.com/rajeshsarkar',
-  github: 'https://github.com/rajeshsarkar',
+  github: 'https://github.com/rajeshsarkar95',
   gradient: ''
 },
   {
@@ -43,7 +43,7 @@ export const projects: Project[] = [
     desc: "A comprehensive pathology management system for efficient lab operations, patient management, and test result tracking.",
     demo: "",
     gradient: '',
-    github: 'https://github.com/rajeshsarkar'
+    github: 'https://github.com/rajeshsarkar95'
   },
   {
    id:"School-Management",
@@ -55,7 +55,7 @@ export const projects: Project[] = [
    desc:"A comprehensive school management system for efficient administration, student tracking, and communication.",
    demo:"https://school-management-system-eta.vercel.app/",
    gradient:'',
-   github:'https://github.com/rajeshsarkar' 
+   github:'https://github.com/rajeshsarkar95' 
   },
 {
   id: 'taskflow',
@@ -66,7 +66,7 @@ export const projects: Project[] = [
   title: 'skillup —  edtech Project',
   desc: 'Real-time project management tool with drag-and-drop boards, team collaboration, live notifications, and Kanban views.',
   demo: 'https://github.com/rajeshsarkar',
-  github: 'https://github.com/rajeshsarkar',
+  github: 'https://github.com/rajeshsarkar95',
   gradient: ''
 },
 {
@@ -78,7 +78,7 @@ export const projects: Project[] = [
   title: 'ColorPlay — Images Generations',
   desc: 'ColorPlay is a creative image generation platform that allows users to generate unique visuals using AI-',
   demo: 'https://github.com/rajeshsarkar',
-  github: 'https://github.com/rajeshsarkar',
+  github: 'https://github.com/rajeshsarkar95',
 },
 {
   id: 'analyticspro',
@@ -88,7 +88,7 @@ export const projects: Project[] = [
   title: 'Hydrohaven — Dashboard',
   desc: 'We provide Bitlote solutions designed to deliver seamless performance, reliability, and a smooth user experience.',
   demo: 'https://github.com/rajeshsarkar',
-  github: 'https://github.com/rajeshsarkar',
+  github: 'https://github.com/rajeshsarkar95',
   gradient: ''
 },
 {
@@ -99,7 +99,7 @@ export const projects: Project[] = [
   title: 'Portfolio — Healthcare App',
   desc: 'Doctor-patient appointment booking with e-prescriptions, medical records management, and video consultation integration.',
   demo: 'https://github.com/rajeshsarkar',
-  github: 'https://github.com/rajeshsarkar',
+  github: 'https://github.com/rajeshsarkar95',
   gradient: ''
 },
 {
@@ -110,7 +110,7 @@ export const projects: Project[] = [
   title: 'DevBlog — Tech Blog Platform',
   desc: 'SEO-optimised developer blog with MDX support, syntax highlighting, newsletter integration, and 95+ Lighthouse score.',
   demo: 'https://github.com/rajeshsarkar',
-  github: 'https://github.com/rajeshsarkar',
+  github: 'https://github.com/rajeshsarkar95',
   gradient: ''
 },
 ]
