@@ -1,24 +1,5 @@
 'use client'
 
-/**
- * Certificates.tsx
- * ------------------------------------------------------------------
- * A single, self-contained "Certificates & Achievements" section for
- * a developer portfolio. Filterable, searchable, with a detail modal
- * and full add / edit / delete / feature flows — all backed by React
- * state, no backend required.
- *
- * Requires: framer-motion, lucide-react (npm install both)
- * Assumes Tailwind's dark mode is set to "class" — `dark:` utilities
- * below will just no-op harmlessly if you're using the "media"
- * strategy instead.
- *
- * Drop straight into a page:
- *   import Certificates from '@/components/Certificates'
- *   export default function Page() { return <Certificates /> }
- * ------------------------------------------------------------------
- */
-
 import { useEffect, useMemo, useRef, useState, type FormEvent } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import {
@@ -42,9 +23,6 @@ import {
   X,
 } from 'lucide-react'
 
-/* ------------------------------------------------------------------ */
-/*  Types                                                              */
-/* ------------------------------------------------------------------ */
 
 type Category =
   | 'Certificate'
@@ -77,96 +55,33 @@ interface CertificateFormState {
   credentialUrl: string
   imageUrl: string
   description: string
-  skills: string // comma-separated in the form; split into an array on submit
+  skills: string 
 }
-
-/* ------------------------------------------------------------------ */
-/*  Sample data                                                        */
-/* ------------------------------------------------------------------ */
 
 const INITIAL_CERTIFICATES: CertificateItem[] = [
   {
     id: '1',
-    title: 'React.js Developer Certificate',
+    title: 'Letter of Recommendation — Full Stack Developer Intern',
     category: 'Certificate',
-    organization: 'Example Organization',
-    issueDate: '2026',
-    credentialId: 'CERT-12345',
-    credentialUrl: '#',
-    imageUrl: '/certificates/react.jpg',
-    description: 'Certificate demonstrating React.js development skills.',
-    skills: ['React.js', 'JavaScript', 'Frontend'],
-    featured: true,
-  },
-  {
-    id: '2',
-    title: 'AWS Certified Solutions Architect',
-    category: 'Certificate',
-    organization: 'Amazon Web Services',
-    issueDate: '2025',
-    credentialId: 'AWS-88213',
-    credentialUrl: '#',
-    imageUrl: '/certificates/aws.jpg',
-    description:
-      'Validated ability to design distributed systems on AWS that are scalable, secure, and cost-optimized.',
-    skills: ['AWS', 'Cloud Architecture', 'System Design'],
-    featured: true,
-  },
-  {
-    id: '3',
-    title: 'Winner — National Hackathon 2025',
-    category: 'Hackathon',
-    organization: 'HackIndia',
-    issueDate: '2025',
-    credentialId: 'HKI-2025-01',
-    credentialUrl: '#',
-    imageUrl: '/certificates/hackathon.jpg',
-    description:
-      'First place among 400+ teams for building an offline-first healthcare app in 36 hours.',
-    skills: ['Next.js', 'Team Leadership', 'Rapid Prototyping'],
-    featured: true,
-  },
-  {
-    id: '4',
-    title: 'Advanced TypeScript',
-    category: 'Course',
-    organization: 'Frontend Masters',
-    issueDate: '2025',
-    credentialId: 'FM-TS-2025',
-    credentialUrl: '',
-    imageUrl: '/certificates/typescript.jpg',
-    description:
-      'Deep dive into generics, conditional types, and building type-safe APIs at scale.',
-    skills: ['TypeScript', 'Type Systems'],
-    featured: false,
-  },
-  {
-    id: '5',
-    title: "Dean's List — Academic Excellence",
-    category: 'Award',
-    organization: 'University of Technology',
-    issueDate: '2024',
+    organization: 'Cyber Clipper Solutions LLP',
+    issueDate: '17 May 2025',
     credentialId: '',
     credentialUrl: '',
-    imageUrl: '/certificates/deans-list.jpg',
-    description: 'Awarded to the top 5% of the graduating class for academic performance.',
-    skills: ['Academics'],
-    featured: false,
+    imageUrl: '/certificates/cyberclipper-internship.jpg',
+    description:
+      'Letter of recommendation for successfully completing a two-month remote internship as a Full Stack Developer Intern at Cyber Clipper Solutions LLP from March 16, 2025 to May 16, 2025. Recognized for exceptional technical and interpersonal skills, strong problem-solving abilities, teamwork, discipline, commitment, and contributions to real-world projects.',
+    skills: [
+      'Full Stack Development',
+      'Front-End Development',
+      'Back-End Development',
+      'UI Development',
+      'API Optimization',
+      'Team Collaboration',
+      'Problem Solving',
+    ],
+    featured: true,
   },
-  {
-    id: '6',
-    title: 'Runner-Up — Global UI Challenge',
-    category: 'Competition',
-    organization: 'Frontend League',
-    issueDate: '2024',
-    credentialId: 'FL-2024-RU',
-    credentialUrl: '#',
-    imageUrl: '/certificates/ui-challenge.jpg',
-    description: 'Placed 2nd of 1,200 entries in a global interface design and build competition.',
-    skills: ['UI Design', 'CSS', 'Accessibility'],
-    featured: false,
-  },
-]
+];
 
 const CATEGORY_FILTERS: Array<{ value: Category | 'All'; label: string }> = [
   { value: 'All', label: 'All' },
@@ -204,10 +119,6 @@ const EMPTY_FORM: CertificateFormState = {
 
 const genId = () => `cert-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`
 
-/* ------------------------------------------------------------------ */
-/*  Shared field styles                                                */
-/* ------------------------------------------------------------------ */
-
 const inputClass =
   'w-full rounded-xl border border-black/10 dark:border-white/10 bg-white/80 dark:bg-white/[0.04] px-3.5 py-2.5 text-sm text-[#161B22] dark:text-[#F5F3EE] placeholder:text-slate-400 outline-none transition-shadow focus-visible:ring-2 focus-visible:ring-emerald-500/40'
 const labelClass = 'mb-1.5 block text-xs font-semibold text-slate-600 dark:text-slate-300'
@@ -216,9 +127,6 @@ const primaryBtnClass =
 const secondaryBtnClass =
   'inline-flex items-center justify-center gap-2 rounded-xl border border-black/10 dark:border-white/10 px-4 py-2.5 text-sm font-semibold text-slate-600 dark:text-slate-300 transition-colors hover:bg-black/5 dark:hover:bg-white/10'
 
-/* ------------------------------------------------------------------ */
-/*  Component                                                          */
-/* ------------------------------------------------------------------ */
 
 export default function Certificates() {
   const [certificates, setCertificates] = useState<CertificateItem[]>(INITIAL_CERTIFICATES)
@@ -233,8 +141,6 @@ export default function Certificates() {
 
   const prefersReducedMotion = useReducedMotion()
   const titleInputRef = useRef<HTMLInputElement>(null)
-
-  /* ---------- derived data ---------- */
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase()
@@ -254,10 +160,7 @@ export default function Certificates() {
     ],
     [certificates]
   )
-
-  /* ---------- effects ---------- */
-
-  // Lock page scroll while any modal is open
+  
   useEffect(() => {
     const anyOpen = Boolean(viewing) || formOpen || Boolean(pendingDeleteId)
     document.body.style.overflow = anyOpen ? 'hidden' : ''
@@ -266,7 +169,6 @@ export default function Certificates() {
     }
   }, [viewing, formOpen, pendingDeleteId])
 
-  // Escape closes whichever modal is on top
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key !== 'Escape') return
@@ -274,19 +176,15 @@ export default function Certificates() {
       else if (formOpen) closeForm()
       else if (viewing) setViewing(null)
     }
-    window.addEventListener('keydown', onKey)
-    return () => window.removeEventListener('keydown', onKey)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    window.addEventListener('keydown',onKey)
+    return () => window.removeEventListener('keydown',onKey)
   }, [pendingDeleteId, formOpen, viewing])
 
-  // Autofocus the first field when the add/edit form opens
-  useEffect(() => {
+  useEffect(()=>{
     if (!formOpen) return
-    const t = setTimeout(() => titleInputRef.current?.focus(), 50)
+    const t = setTimeout(()=> titleInputRef.current?.focus(), 50)
     return () => clearTimeout(t)
   }, [formOpen])
-
-  /* ---------- handlers ---------- */
 
   function openAddForm() {
     setEditingId(null)
@@ -393,20 +291,14 @@ export default function Certificates() {
     setViewing((prev) => (prev?.id === pendingDeleteId ? null : prev))
     setPendingDeleteId(null)
   }
-
   function toggleFeatured(id: string) {
     setCertificates((prev) => prev.map((c) => (c.id === id ? { ...c, featured: !c.featured } : c)))
     setViewing((prev) => (prev && prev.id === id ? { ...prev, featured: !prev.featured } : prev))
   }
-
   function handleImageError(id: string) {
     setBrokenImages((prev) => ({ ...prev, [id]: true }))
   }
-
   const deleteTarget = pendingDeleteId ? certificates.find((c) => c.id === pendingDeleteId) : null
-
-  /* ---------- card renderer ---------- */
-
   const renderCard = (cert: CertificateItem) => {
     const meta = CATEGORY_META[cert.category]
     const CategoryIcon = meta.icon
@@ -417,13 +309,12 @@ export default function Certificates() {
         <div className="relative aspect-[4/3] w-full">
           <div className="absolute inset-0 overflow-hidden rounded-t-2xl">
             {hasImage ? (
-              // eslint-disable-next-line @next/next/no-img-element -- image URLs are arbitrary/user-supplied, not known at build time
               <img
                 src={cert.imageUrl}
                 alt={cert.title}
                 loading="lazy"
                 onError={() => handleImageError(cert.id)}
-                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                className="h-full w-full object-fill transition-transform duration-500 group-hover:scale-105"
               />
             ) : (
               <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#1F2937] via-[#2A3652] to-[#3B4A6B]">
@@ -431,8 +322,6 @@ export default function Certificates() {
               </div>
             )}
           </div>
-
-          {/* Featured ribbon */}
           {cert.featured && (
             <div className="pointer-events-none absolute left-0 top-0 z-10 h-24 w-24 overflow-hidden">
               <div className="absolute -left-10 top-5 w-36 -rotate-45 bg-gradient-to-r from-amber-500 to-yellow-400 py-1 text-center text-[10px] font-bold uppercase tracking-widest text-white shadow-md">
@@ -440,14 +329,10 @@ export default function Certificates() {
               </div>
             </div>
           )}
-
-          {/* Category chip */}
           <div className="absolute right-3 top-3 z-10 inline-flex items-center gap-1 rounded-full bg-white/90 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider shadow-sm backdrop-blur dark:bg-black/60">
             <CategoryIcon className={`h-3 w-3 ${meta.color}`} />
             <span className={meta.color}>{cert.category}</span>
           </div>
-
-          {/* Hover actions */}
           <div className="absolute right-3 top-11 z-10 flex flex-col items-end gap-1.5 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
             <button
               type="button"
@@ -478,8 +363,6 @@ export default function Certificates() {
               <Trash2 className="h-3.5 w-3.5" />
             </button>
           </div>
-
-          {/* Verified stamp */}
           {cert.credentialUrl && (
             <div className="absolute -bottom-5 right-4 z-20 flex h-14 w-14 -rotate-[8deg] items-center justify-center rounded-full border-2 border-dashed border-emerald-500/70 bg-white/95 shadow-md backdrop-blur dark:bg-[#0F1A2B]/95">
               <div className="flex flex-col items-center leading-none">
@@ -491,17 +374,14 @@ export default function Certificates() {
             </div>
           )}
         </div>
-
         <div className="flex flex-1 flex-col gap-3 p-5 pt-7">
           <div className="flex items-center gap-1.5 text-[11px] font-semibold uppercase tracking-wider">
             <span className={`h-1.5 w-1.5 rounded-full ${meta.dot}`} />
             <span className={meta.color}>{cert.category}</span>
           </div>
-
           <h3 className="font-serif text-lg font-semibold leading-snug text-[#161B22] line-clamp-2 dark:text-[#F5F3EE]">
             {cert.title}
           </h3>
-
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-500 dark:text-slate-400">
             <span className="inline-flex items-center gap-1">
               <Building2 className="h-3.5 w-3.5" />
@@ -512,11 +392,9 @@ export default function Certificates() {
               {cert.issueDate}
             </span>
           </div>
-
           <p className="text-sm leading-relaxed text-slate-600 line-clamp-2 dark:text-slate-300">
             {cert.description}
           </p>
-
           {cert.skills.length > 0 && (
             <div className="flex flex-wrap gap-1.5">
               {cert.skills.slice(0, 3).map((skill) => (
@@ -563,9 +441,6 @@ export default function Certificates() {
       </div>
     )
   }
-
-  /* ---------- render ---------- */
-
   return (
     <section className="relative w-full overflow-hidden bg-[#FAF7F0] px-4 py-16 transition-colors dark:bg-[#0B1220] sm:px-6 sm:py-20 lg:px-10">
       <div
@@ -576,14 +451,12 @@ export default function Certificates() {
         aria-hidden
         className="pointer-events-none absolute -bottom-24 left-0 h-72 w-72 rounded-full bg-amber-400/10 blur-3xl dark:bg-amber-500/10"
       />
-
       <motion.div
         className="relative mx-auto max-w-7xl"
         initial={prefersReducedMotion ? undefined : { opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
       >
-        {/* Header */}
         <div className="mb-10 flex flex-col items-start justify-between gap-6 sm:mb-14 lg:flex-row lg:items-end">
           <div className="flex max-w-2xl flex-col gap-4">
             <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-emerald-600/20 bg-emerald-500/10 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.15em] text-emerald-700 dark:text-emerald-400">
@@ -610,13 +483,10 @@ export default function Certificates() {
               ))}
             </div>
           </div>
-
           <button type="button" onClick={openAddForm} className={`${primaryBtnClass} self-start`}>
             <Plus className="h-4 w-4" /> Add Certificate
           </button>
         </div>
-
-        {/* Toolbar */}
         <div className="mb-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div className="relative w-full sm:max-w-xs">
             <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
@@ -650,8 +520,6 @@ export default function Certificates() {
             })}
           </div>
         </div>
-
-        {/* Grid / empty state */}
         {filtered.length === 0 ? (
           <div className="flex flex-col items-center justify-center gap-4 rounded-2xl border border-dashed border-black/10 py-20 text-center dark:border-white/10">
             <div className="flex h-14 w-14 items-center justify-center rounded-full bg-black/5 dark:bg-white/5">
@@ -704,8 +572,6 @@ export default function Certificates() {
           </motion.div>
         )}
       </motion.div>
-
-      {/* ---------------- View modal ---------------- */}
       <AnimatePresence>
         {viewing && (
           <motion.div
@@ -736,12 +602,11 @@ export default function Certificates() {
 
               <div className="relative aspect-video w-full overflow-hidden bg-slate-100 dark:bg-white/5">
                 {viewing.imageUrl && !brokenImages[viewing.id] ? (
-                  // eslint-disable-next-line @next/next/no-img-element -- image URLs are arbitrary/user-supplied, not known at build time
                   <img
                     src={viewing.imageUrl}
                     alt={viewing.title}
                     onError={() => handleImageError(viewing.id)}
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-fill"
                   />
                 ) : (
                   <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#1F2937] via-[#2A3652] to-[#3B4A6B]">
@@ -837,8 +702,6 @@ export default function Certificates() {
           </motion.div>
         )}
       </AnimatePresence>
-
-      {/* ---------------- Add / edit form modal ---------------- */}
       <AnimatePresence>
         {formOpen && (
           <motion.div
@@ -871,7 +734,6 @@ export default function Certificates() {
                   <X className="h-4 w-4" />
                 </button>
               </div>
-
               <form onSubmit={handleFormSubmit} className="flex flex-col gap-4">
                 <div>
                   <label className={labelClass}>Title *</label>
@@ -884,7 +746,6 @@ export default function Certificates() {
                     className={inputClass}
                   />
                 </div>
-
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
                     <label className={labelClass}>Category</label>
@@ -914,7 +775,6 @@ export default function Certificates() {
                     />
                   </div>
                 </div>
-
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
                     <label className={labelClass}>Issue Date *</label>
@@ -936,7 +796,6 @@ export default function Certificates() {
                     />
                   </div>
                 </div>
-
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div>
                     <label className={labelClass}>Credential URL</label>
@@ -957,7 +816,6 @@ export default function Certificates() {
                     />
                   </div>
                 </div>
-
                 <div>
                   <label className={labelClass}>Description *</label>
                   <textarea
@@ -969,7 +827,6 @@ export default function Certificates() {
                     className={`${inputClass} resize-none`}
                   />
                 </div>
-
                 <div>
                   <label className={labelClass}>Skills</label>
                   <input
@@ -980,7 +837,6 @@ export default function Certificates() {
                   />
                   <p className="mt-1.5 text-[11px] text-slate-400">Separate each skill with a comma.</p>
                 </div>
-
                 <div className="mt-2 flex items-center justify-end gap-3 border-t border-black/10 pt-5 dark:border-white/10">
                   <button type="button" onClick={closeForm} className={secondaryBtnClass}>
                     Cancel
@@ -994,8 +850,6 @@ export default function Certificates() {
           </motion.div>
         )}
       </AnimatePresence>
-
-      {/* ---------------- Delete confirmation ---------------- */}
       <AnimatePresence>
         {deleteTarget && (
           <motion.div
