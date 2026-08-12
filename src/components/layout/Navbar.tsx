@@ -17,7 +17,7 @@ const NAV_LINKS: NavLink[] = [
   { label: "Experience", href: "#experience" },
   { label: "Education", href: "#Education" },
   { label: "Contact", href: "#contact" },
-  {label:"Certificates",href:"/certificates"}
+  {label:"certificates",href:"/certificates"}
 ];
 
 function scrollToSection(href: string): void {
