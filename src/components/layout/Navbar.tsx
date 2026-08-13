@@ -17,7 +17,7 @@ const NAV_LINKS: NavLink[] = [
   { label: "Experience", href: "#experience" },
   { label: "Education", href: "#Education" },
   { label: "Contact", href: "#contact" },
-  { label: "certificates", href: "/certificates" },
+  { label: "certificates", href: "/certificate" },
 ];
 
 function scrollToSection(href: string): void {
@@ -42,14 +42,12 @@ export default function Navbar(): JSX.Element {
 
   const handleNav = useCallback((href: string): void => {
     setMenuOpen(false);
-
-    if (href.startsWith("#")) {
+    if (href.startsWith("#")){
       scrollToSection(href);
     } else {
       window.location.href = href;
     }
   }, []);
-
   return (
     <>
       <nav
@@ -84,7 +82,6 @@ export default function Navbar(): JSX.Element {
                 </li>
               ))}
             </ul>
-
             <div className="flex items-center gap-3">
               <button
                 onClick={toggleTheme}
