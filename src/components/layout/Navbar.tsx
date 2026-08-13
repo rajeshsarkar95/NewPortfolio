@@ -13,11 +13,11 @@ const NAV_LINKS: NavLink[] = [
   { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
   { label: "Music", href: "/music" },
-  {label:"images",href:"/imagesgalary"},
+  { label: "images", href: "/imagesgalary" },
   { label: "Experience", href: "#experience" },
   { label: "Education", href: "#Education" },
   { label: "Contact", href: "#contact" },
-  {label:"certificates",href:"/certificates"}
+  { label: "certificates", href: "/certificates" },
 ];
 
 function scrollToSection(href: string): void {
@@ -46,7 +46,7 @@ export default function Navbar(): JSX.Element {
     if (href.startsWith("#")) {
       scrollToSection(href);
     } else {
-      window.location.href = href; 
+      window.location.href = href;
     }
   }, []);
 
@@ -71,6 +71,7 @@ export default function Navbar(): JSX.Element {
             >
               !!Rajesh
             </button>
+
             <ul className="hidden md:flex gap-9 list-none">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
@@ -83,20 +84,27 @@ export default function Navbar(): JSX.Element {
                 </li>
               ))}
             </ul>
+
             <div className="flex items-center gap-3">
               <button
                 onClick={toggleTheme}
-                aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+                aria-label={
+                  isDark
+                    ? "Switch to light mode"
+                    : "Switch to dark mode"
+                }
                 className="w-10 h-10 rounded-[10px] border border-[var(--border2)] bg-[var(--surface)] text-[var(--text2)] flex items-center justify-center transition-all hover:bg-[var(--surface2)] hover:text-[var(--text)] hover:border-[var(--accent)]"
               >
                 {isDark ? "🌙" : "☀️"}
               </button>
+
               <button
                 onClick={() => handleNav("#contact")}
                 className="hidden md:block c-btn-primary py-2 px-5 text-sm"
               >
                 Hire Me
               </button>
+
               <button
                 onClick={() => setMenuOpen((prev) => !prev)}
                 aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -107,11 +115,11 @@ export default function Navbar(): JSX.Element {
                 <span className="w-[22px] h-0.5 bg-[var(--text)] rounded" />
                 <span className="w-[22px] h-0.5 bg-[var(--text)] rounded" />
               </button>
-
             </div>
           </div>
         </div>
       </nav>
+
       {menuOpen && (
         <div
           role="navigation"
