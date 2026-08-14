@@ -70,13 +70,6 @@ const books: Book[] = [
         coverUrl: "https://covers.openlibrary.org/b/isbn/9780804139021-L.jpg",
         status: "completed",
     },
-    {
-        id: 9,
-        title: "its ok okay not to be ok",  
-        author: "Cheryl Strayed",
-        coverUrl: "https://covers.openlibrary.org/b/isbn/9780399593481-L.jpg",
-        status: "reading",
-    }
 ];
 
 const statusConfig: Record<ReadingStatus, {label:string; bg:string;text: string }> = {
@@ -206,7 +199,6 @@ export default function BooksComponent() {
                             A collection of books that shaped my thinking.
                         </p>
                     </div>
-
                     <div className="flex items-center justify-center gap-3 mb-10 flex-wrap">
                         {tabs.map((tab) => {
                             const active = activeTab === tab.key;
