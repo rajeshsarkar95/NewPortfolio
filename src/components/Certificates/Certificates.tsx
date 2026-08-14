@@ -61,7 +61,7 @@ interface CertificateFormState {
 const INITIAL_CERTIFICATES: CertificateItem[] = [
   {
     id: '1',
-    title: 'Letter of Recommendation — Full Stack Developer Intern',
+    title: 'Letter of Recommendation — Full Stack Developer',
     category: 'Certificate',
     organization: 'Cyber Clipper Solutions LLP',
     issueDate: '17 May 2025',
@@ -69,7 +69,7 @@ const INITIAL_CERTIFICATES: CertificateItem[] = [
     credentialUrl: '',
     imageUrl: '/certificates/cyberclipper-internship.jpg',
     description:
-      'Letter of recommendation for successfully completing a two-month remote internship as a Full Stack Developer Intern at Cyber Clipper Solutions LLP from March 16, 2025 to May 16, 2025. Recognized for exceptional technical and interpersonal skills, strong problem-solving abilities, teamwork, discipline, commitment, and contributions to real-world projects.',
+      'Letter of recommendation for successfully completing a six-month remote internship as a Full Stack Developer Intern at Cyber Clipper Solutions LLP from March 16, 2025 to May 16, 2025. Recognized for exceptional technical and interpersonal skills, strong problem-solving abilities, teamwork, discipline, commitment, and contributions to real-world projects.',
     skills: [
       'Full Stack Development',
       'Front-End Development',
@@ -128,7 +128,7 @@ const secondaryBtnClass =
   'inline-flex items-center justify-center gap-2 rounded-xl border border-black/10 dark:border-white/10 px-4 py-2.5 text-sm font-semibold text-slate-600 dark:text-slate-300 transition-colors hover:bg-black/5 dark:hover:bg-white/10'
 
 
-export default function Certificates() {
+export default function Certificates(){
   const [certificates, setCertificates] = useState<CertificateItem[]>(INITIAL_CERTIFICATES)
   const [query, setQuery] = useState('')
   const [activeCategory, setActiveCategory] = useState<Category | 'All'>('All')
@@ -138,7 +138,6 @@ export default function Certificates() {
   const [form, setForm] = useState<CertificateFormState>(EMPTY_FORM)
   const [pendingDeleteId, setPendingDeleteId] = useState<string | null>(null)
   const [brokenImages, setBrokenImages] = useState<Record<string, boolean>>({})
-
   const prefersReducedMotion = useReducedMotion()
   const titleInputRef = useRef<HTMLInputElement>(null)
 
@@ -151,17 +150,15 @@ export default function Certificates() {
       )
       .sort((a, b) => Number(b.featured) - Number(a.featured))
   }, [certificates, activeCategory, query])
-
   const stats = useMemo(
-    () => [
+    ()=>[
       { label: 'Credentials', value: certificates.length },
       { label: 'Featured', value: certificates.filter((c) => c.featured).length },
       { label: 'Categories', value: new Set(certificates.map((c) => c.category)).size },
     ],
     [certificates]
   )
-  
-  useEffect(() => {
+  useEffect(()=>{
     const anyOpen = Boolean(viewing) || formOpen || Boolean(pendingDeleteId)
     document.body.style.overflow = anyOpen ? 'hidden' : ''
     return () => {
@@ -203,11 +200,10 @@ export default function Certificates() {
       credentialUrl: cert.credentialUrl ?? '',
       imageUrl: cert.imageUrl,
       description: cert.description,
-      skills: cert.skills.join(', '),
+      skills: cert.skills.join(','),
     })
     setFormOpen(true)
   }
-
   function closeForm() {
     setFormOpen(false)
     setEditingId(null)
@@ -217,22 +213,20 @@ export default function Certificates() {
   function handleFormChange<K extends keyof CertificateFormState>(
     key: K,
     value: CertificateFormState[K]
-  ) {
-    setForm((prev) => ({ ...prev, [key]: value }))
+  ){
+    setForm((prev)=>({...prev,[key]:value}))
   }
 
-  function handleFormSubmit(e: FormEvent<HTMLFormElement>) {
+  function handleFormSubmit(e: FormEvent<HTMLFormElement>){
     e.preventDefault()
     if (!form.title.trim() || !form.organization.trim() || !form.issueDate.trim()) return
-
     const skillsArray = form.skills
       .split(',')
       .map((s) => s.trim())
       .filter(Boolean)
-
-    if (editingId) {
-      setCertificates((prev) =>
-        prev.map((c) =>
+    if (editingId){
+      setCertificates((prev)=>
+        prev.map((c)=>
           c.id === editingId
             ? {
                 ...c,
@@ -284,18 +278,17 @@ export default function Certificates() {
 
     closeForm()
   }
-
-  function confirmDelete() {
+  function confirmDelete(){
     if (!pendingDeleteId) return
     setCertificates((prev) => prev.filter((c) => c.id !== pendingDeleteId))
     setViewing((prev) => (prev?.id === pendingDeleteId ? null : prev))
     setPendingDeleteId(null)
   }
-  function toggleFeatured(id: string) {
+  function toggleFeatured(id:string){
     setCertificates((prev) => prev.map((c) => (c.id === id ? { ...c, featured: !c.featured } : c)))
     setViewing((prev) => (prev && prev.id === id ? { ...prev, featured: !prev.featured } : prev))
   }
-  function handleImageError(id: string) {
+  function handleImageError(id: string){
     setBrokenImages((prev) => ({ ...prev, [id]: true }))
   }
   const deleteTarget = pendingDeleteId ? certificates.find((c) => c.id === pendingDeleteId) : null
@@ -360,7 +353,7 @@ export default function Certificates() {
               title="Delete"
               className="flex h-8 w-8 items-center justify-center rounded-full bg-white/90 text-rose-600 shadow-sm backdrop-blur transition-colors hover:bg-rose-500 hover:text-white dark:bg-black/60"
             >
-              <Trash2 className="h-3.5 w-3.5" />
+              <Trash2 className="h-3.5 w-3.5"/>
             </button>
           </div>
           {cert.credentialUrl && (
@@ -646,11 +639,9 @@ export default function Certificates() {
                     <span className="font-mono text-xs text-slate-400">#{viewing.credentialId}</span>
                   )}
                 </div>
-
                 <p className="mt-5 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
                   {viewing.description}
                 </p>
-
                 {viewing.skills.length > 0 && (
                   <div className="mt-5 flex flex-wrap gap-2">
                     {viewing.skills.map((skill) => (
@@ -801,7 +792,7 @@ export default function Certificates() {
                     <label className={labelClass}>Credential URL</label>
                     <input
                       value={form.credentialUrl}
-                      onChange={(e) => handleFormChange('credentialUrl', e.target.value)}
+                      onChange={(e) => handleFormChange('credentialUrl',e.target.value)}
                       placeholder="https://…"
                       className={inputClass}
                     />
