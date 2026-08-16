@@ -2,24 +2,22 @@ import type { Skill, Project, Experience, Certification} from '@/types'
 
 export const skills: Skill[] = [
   {name:"Javascipt",             pct:90},
-  { name: 'React.js',            pct: 92 },
-  { name: 'Next.js',             pct: 88 },
-  { name: 'Node.js',             pct: 85 },
-  { name: 'TypeScript',          pct: 82 },
-  { name: 'MongoDB',             pct: 80 },
-  { name: 'Express.js',          pct: 84 },
-  { name: 'Redux / Zustand',     pct: 78 },
-  { name: 'AWS (EC2, S3, Lambda)', pct: 70 },
+  { name: 'React.js',            pct: 92},
+  { name: 'Next.js',             pct: 88},
+  { name: 'Node.js',             pct: 85},
+  { name: 'TypeScript',          pct: 82},
+  { name: 'MongoDB',pct: 80},
+  { name: 'Express.js',pct: 84},
+  { name: 'Redux / Zustand',pct: 78},
+  { name: 'AWS (EC2, S3, Lambda)',pct:70},
   { name:"Cloude Ai",pct:60},
   {name:"ChatGPT (GPT-5.5)", pct:50}
 ]
-
 export const chips: string[] = [
   'MySQL','PostgreSQL','Redis','Docker','Git / GitHub','REST APIs',
   'GraphQL','SEO Optimization','Performance Tuning','TailwindCSS',
   'Jest / Testing','CI/CD Pipelines','Linux / Bash','Figma',
 ]
-
 export const projects: Project[] = [
   {
   id: 'shopverse',
@@ -37,8 +35,8 @@ export const projects: Project[] = [
     id: "pathology",
     emoji: "🧪",
     image: "/images/projects/Pathogy.png",
-    featured: true,
-    tags: ["Next.js", "Node.js", "MongoDB", "Express"],
+    featured:true,
+    tags: ["Next.js","Node.js","MongoDB","Express"],
     title: "Pathology Management System",
     desc: "A comprehensive pathology management system for efficient lab operations, patient management, and test result tracking.",
     demo: "",
@@ -49,7 +47,7 @@ export const projects: Project[] = [
    id:"School-Management",
    emoji:"🏫",
    image:"/images/projects/EducationsMag.png",
-   featured: false,
+   featured:false,
    tags:["Next.js","Node.js","MongoDB","Express"],
    title:"School Management System",
    desc:"A comprehensive school management system for efficient administration, student tracking, and communication.",
@@ -114,36 +112,51 @@ export const projects: Project[] = [
   gradient: ''
 },
 ]
-
 export const experiences: Experience[] = [
   {
-    id: 'e1', company: 'Appsdelite Technology', role: 'Full Stack Developer', period: '2025 — Present',
-    points: [
-      'Architected microservice-based Node.js APIs serving 10 k+ daily requests',
-      'Built responsive React dashboards reducing user task completion time by 40 %',
-      'Implemented Redis caching & MongoDB indexing, improving API latency by 60 %',
-      'Led REST → GraphQL migration, improving client-side data-fetching efficiency',
-    ],
-  },
+  id: 'e1',
+  company: 'Mentoxo Technology',
+  role: 'Full Stack Developer',
+  period: '2025 — Present',
+  points: [
+    'Architected microservice-based Node.js APIs serving 10K+ daily requests',
+    'Built responsive React dashboards, reducing user task completion time by 40%',
+    'Implemented secure authentication and role-based authorization with protected routes and access controls',
+    'Implemented real-time communication and live updates using Socket.IO for chat, notifications, and collaborative features',
+    'Implemented Redis caching and MongoDB indexing, improving API latency by 60%',
+    'Led REST → GraphQL migration, improving client-side data-fetching efficiency',
+    'Managed user access, permissions, session handling, and authentication workflows across the platform',
+  ],
+},
   {
-    id: 'e2', company: 'CyberClipper Solutions LLP Dehradun', role: 'Junior Full  Stack Developer', period: '2025 — 2023',
-    points: [
-      'Developed 8+ client-facing web apps using React.js and Next.js',
-      'Designed MongoDB schemas and built RESTful APIs with Express.js',
-      'Improved Core Web Vitals scores to 90+ across all client projects',
-      'Collaborated with designers to ship pixel-perfect responsive UIs',
-    ],
-  },
+  id: 'e2',
+  company: 'CyberClipper Solutions LLP Dehradun',
+  role: 'Junior Full Stack Developer',
+  period: '2025 — 2023',
+  points: [
+    'Developed 8+ client-facing web applications using React.js and Next.js',
+    'Designed MongoDB schemas and built scalable RESTful APIs with Express.js',
+    'Integrated OpenAI ChatGPT APIs and DeepAI APIs to build AI-powered features and automation workflows',
+    'Implemented AI-driven text generation, content processing, and intelligent user interactions',
+    'Improved Core Web Vitals scores to 90+ across client projects',
+    'Collaborated with designers to deliver pixel-perfect, responsive user interfaces',
+  ],
+},
   {
-    id: 'e3', company: 'SofTech Pilibhit', role: 'Frontend Developer Intern', period: '2021 — 2022',
-    points: [
-      'Delivered 5+ end-to-end web applications for small businesses',
-      'Provided SEO optimisation services improving organic traffic by 35 %',
-      'Built reusable component libraries, reducing dev time across projects',
-    ],
-  },
+  id: 'e3',
+  company: 'SofTech Pilibhit',
+  role: 'Frontend Developer Intern',
+  period: '2021 — 2022',
+  points: [
+    'Delivered 5+ end-to-end web applications and small e-commerce solutions for local businesses',
+    'Developed business websites and customized web solutions based on client requirements',
+    'Implemented secure user authentication and role-based authorization for web applications',
+    'Built reusable React components and UI libraries, reducing development time across projects',
+    'Provided SEO optimization services, improving organic traffic by 35%',
+    'Integrated product listings, shopping cart, user accounts, and basic order management for e-commerce applications',
+  ],
+},
 ]
-
 export const certifications: Certification[] = [
   { id:'c1', icon:'🎯', color:'rgba(108,99,255,0.15)', iconColor:'#6c63ff',  title:'Meta Front-End Developer',        issuer:'Meta / Coursera',       date:'2023' },
   { id:'c2', icon:'☁️',  color:'rgba(56,189,248,0.15)', iconColor:'#38bdf8',  title:'AWS Certified Cloud Practitioner', issuer:'Amazon Web Services',    date:'2023' },

@@ -95,7 +95,7 @@ const CATEGORY_FILTERS: Array<{ value: Category | 'All'; label: string }> = [
 
 const CATEGORY_META: Record<
   Category,
-  { icon: typeof Trophy; color: string; dot: string }
+  { icon:typeof Trophy;color:string;dot:string}
 > = {
   Certificate: { icon: FileBadge2, color: 'text-emerald-600 dark:text-emerald-400', dot: 'bg-emerald-500' },
   Achievement: { icon: Sparkles, color: 'text-violet-600 dark:text-violet-400', dot: 'bg-violet-500' },

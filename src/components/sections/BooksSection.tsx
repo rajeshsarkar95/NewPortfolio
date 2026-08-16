@@ -11,7 +11,6 @@ interface Book {
     coverUrl: string;
     status: ReadingStatus;
 }
-
 const books: Book[] = [
 
     {

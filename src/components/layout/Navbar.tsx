@@ -69,7 +69,6 @@ export default function Navbar(): JSX.Element {
             >
               !!Rajesh
             </button>
-
             <ul className="hidden md:flex gap-9 list-none">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
@@ -108,15 +107,14 @@ export default function Navbar(): JSX.Element {
                 aria-expanded={menuOpen}
                 className="md:hidden flex flex-col gap-[5px] p-2"
               >
-                <span className="w-[22px] h-0.5 bg-[var(--text)] rounded" />
-                <span className="w-[22px] h-0.5 bg-[var(--text)] rounded" />
-                <span className="w-[22px] h-0.5 bg-[var(--text)] rounded" />
+                <span className="w-[22px] h-0.5 bg-[var(--text)] rounded"/>
+                <span className="w-[22px] h-0.5 bg-[var(--text)] rounded"/>
+                <span className="w-[22px] h-0.5 bg-[var(--text)] rounded"/>
               </button>
             </div>
           </div>
         </div>
       </nav>
-
       {menuOpen && (
         <div
           role="navigation"
