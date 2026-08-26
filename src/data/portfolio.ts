@@ -11,7 +11,8 @@ export const skills: Skill[] = [
   { name: 'Redux / Zustand',pct: 78},
   { name: 'AWS (EC2, S3, Lambda)',pct:70},
   { name:"Cloude Ai",pct:60},
-  {name:"ChatGPT (GPT-5.5)", pct:50}
+  {name:"ChatGPT (GPT-5.5)", pct:50},
+  {name:"Postman",pct:70}
 ]
 export const chips: string[] = [
   'MySQL','PostgreSQL','Redis','Docker','Git / GitHub','REST APIs',

@@ -78,7 +78,7 @@ export default function HeroSection() {
               <span className="text-[var(--text3)] opacity-50">&gt;</span> Full Stack Software Engineer — MERN Stack
             </p>
             <p className="reveal-item text-[var(--text2)] text-lg leading-relaxed max-w-xl mb-10 opacity-90" style={{ "--delay": "0.4s" } as any}>
-              I craft scalable, high-performance web applications from Uttar Pradesh, India.
+              I craft scalable, high-performance web applications from Mohali chandigarh, India.
               <span className="text-[var(--text)] font-medium"> 2+ years </span> of turning complex problems into elegant solutions.
             </p>
             <div className="reveal-item flex flex-wrap gap-5" style={{ "--delay": "0.5s" } as any}>

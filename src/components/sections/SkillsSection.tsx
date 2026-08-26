@@ -65,7 +65,6 @@ export default function SkillsSection() {
             ))}
           </div>
         </div>
-
       </div>
     </section>
   )
