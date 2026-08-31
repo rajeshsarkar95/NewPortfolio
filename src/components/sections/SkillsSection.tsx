@@ -17,7 +17,7 @@ export default function SkillsSection() {
           role="list"
           aria-label="Core technical skills"
         >
-          {skills.map((s, i) => (
+          {skills.map((s,i) =>(
             <div
               key={s.name}
               role="listitem"

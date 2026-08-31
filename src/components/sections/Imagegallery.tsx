@@ -30,7 +30,9 @@ const IMAGES: GalleryImage[] = [
     { id: 5, src: "/myimages/photokhatima.webp", tag: "Music", label: "restaurants", location: "Khatima", year: "2023" },
     { id: 6, src: "/myimages/zymwithanuj.jpeg", tag: "Life", label: "zym", location: "Favorite Cafe", year: "2024" },
     { id: 7, src: "/myimages/zym.jpeg", tag: "Work", label: "Zym", location: "Neoria", year: "2023" },
-    {id:8,src:"/myimages/github.png",tag:"Work",label:"GitHub",location:"GitHub",year:"2022"},
+    {id:8,src:"/myimages/chandighar.jpeg",tag:"Work",label:"GitHub",location:"chandigarh",year:"2026"},
+    {id:8,src:"/myimages/chandighard.jpeg",tag:"Work",label:"GitHub",location:"chandigarh",year:"2026"},
+    
 
 ];
 
